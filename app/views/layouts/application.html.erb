@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>BlogMySQL</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+		
+	<div class="container">
+		<nav class="navbar navbar-default navbar-fixed-top">
+			<div class="container">
+			  <div class="container-fluid">
+			    <div class="navbar-header">
+			      <%= link_to "BlogMySQL", root_path, class: 'navbar-brand' %>
+			      <ul class="nav navbar-nav">
+			      	<% if user_signed_in? %>
+							<li><%= link_to 'Nuevo post', new_post_path %></li>
+							<li><%= link_to 'Salir', destroy_user_session_path, method: :delete %></li>
+			     			<li><p class="navbar-text navbar-right">Bienvenido: <%= current_user.user_name %></p></li>
+			      	<% else %>
+			      		<li><%= link_to 'Registrarse', new_user_registration_path %></li>
+			      		<li><%= link_to 'Iniciar Sesion', new_user_session_path %></li>
+			      	<% end %>
+			      </ul>
+			    </div>
+			  </div>
+			</div>
+		</nav>
+
+		<p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+
+		<%= yield %>
+	</div>
+
+</body>
+</html>

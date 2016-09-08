@@ -1,0 +1,4 @@
+<%= simple_form_for([@post, @post.comments.build]) do |form| %>
+	<%= form.input :comentario %>
+	<%= form.button :submit %>
+<% end %>

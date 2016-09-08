@@ -1,0 +1,8 @@
+<% @posts.each do |post| %>
+	<div class="panel panel-default">
+	  <div class="panel-heading">
+	  		<%= link_to post.titulo, post_path(post) %> - por <%= post.user.user_name %>
+	  </div>
+	  <div class="panel-body"><%= post.estracto %></div>
+	</div>
+<% end %>

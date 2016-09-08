@@ -1,0 +1,18 @@
+<div class="jumbotron">
+  <h1><%= @post.titulo %></h1>
+  <p><%= @post.estracto %></p>
+  <p><%= @post.contenido %></p>
+  <%= link_to 'Atras', root_path, class: 'btn btn-default' %>
+	<% if user_signed_in? %>
+	  <% if current_user.id == @post.user_id %>
+	  		<%= link_to 'Editar', edit_post_path(@post), class: 'btn btn-warning' %>
+	  		<%= link_to 'Borrar', post_path(@post), class: 'btn btn-danger', method: :delete, data: { confirm: 'Seguro?' } %>
+	  <% end %>
+	<% end %>
+</div>
+
+<%= render 'comments/comments' %>
+
+<% if user_signed_in? %>
+	<%= render 'comments/form' %>
+<% end %>
